@@ -1,11 +1,11 @@
-from datetime import date
+from datetime import datetime
 from pydantic import BaseModel, EmailStr
 from typing import Optional
 from models.user import WorkStatus
 
 class UserBase(BaseModel):
     full_name: str
-    birth_date: date
+    birth_date: datetime
     position: str
     department: str
     work_status: WorkStatus
@@ -22,7 +22,7 @@ class UserCreate(UserBase):
 
 class UserUpdate(BaseModel):
     full_name: Optional[str] = None
-    birth_date: Optional[date] = None
+    birth_date: Optional[datetime] = None
     position: Optional[str] = None
     department: Optional[str] = None
     work_status: Optional[WorkStatus] = None
