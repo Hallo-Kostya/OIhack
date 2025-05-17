@@ -1,14 +1,15 @@
 from datetime import datetime
 from pydantic import BaseModel, EmailStr
 from typing import Optional
-from models.user import WorkStatus
+from models.user import WorkStatus, WorkRole
+
 
 class UserBase(BaseModel):
     full_name: str
     birth_date: datetime
-    position: str
-    department: str
-    work_status: WorkStatus
+    role: WorkRole
+    department_id: int
+    work_status: Optional[WorkStatus] = WorkStatus.IN_OFFICE
     email: EmailStr
     phone: Optional[str] = None
     profile_photo: Optional[str] = None
@@ -23,7 +24,7 @@ class UserCreate(UserBase):
 class UserUpdate(BaseModel):
     full_name: Optional[str] = None
     birth_date: Optional[datetime] = None
-    position: Optional[str] = None
+    r: Optional[str] = None
     department: Optional[str] = None
     work_status: Optional[WorkStatus] = None
     email: Optional[EmailStr] = None

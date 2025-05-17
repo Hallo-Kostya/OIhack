@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     POSTGRES_DB_NAME: str
     SECRET_JWT_KEY: str
     GIGACHAT_API_KEY: str
+    BITRIX_URL: str
 
     @property
     def DATABASE_URL_PSYCOPG(self):

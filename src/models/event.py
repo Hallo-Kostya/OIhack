@@ -4,6 +4,13 @@ from sqlalchemy import String, DateTime, Text, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column,relationship
 from .base import Base
 
+class Events_users(Base):
+    __tablename__ = "events_users"
+    member_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), primary_key=True)
+    event_id: Mapped[int] = mapped_column(ForeignKey("events.id", ondelete="CASCADE"), primary_key=True)
+    joined_at: Mapped[DateTime] =  mapped_column(DateTime, default=datetime.now())
+
+
 class Event(Base):
     __tablename__ = "events"
 
@@ -14,9 +21,9 @@ class Event(Base):
     end_date: Mapped[datetime] = mapped_column(DateTime, nullable=True)
     organizer_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"))
     status: Mapped[str] = mapped_column(String(50), default="active")
-    members: Mapped[List["User"]] = relationship(back_populates="events")
+    members: Mapped[List["User"]] = relationship(back_populates="events", secondary="events_users")
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow) 
-    organizer: Mapped["User"] = relationship(back_populates="own_events")
+    organizer: Mapped["User"] = relationship(back_populates="owned_events")
     
     def to_dict(self):
         return {

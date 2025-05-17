@@ -1,13 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select, or_
-from datetime import datetime
-from typing import List, Dict, Any
-import requests
-from config import settings
-from models.user import User
-from models.event import Event
-from services.gigachat_service import GigaChatService
+from fastapi import APIRouter
 from .service import analyze_query
 
 

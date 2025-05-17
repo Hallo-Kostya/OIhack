@@ -3,8 +3,10 @@ from schemas.user import UserBase
 from schemas.event import EventCreateBase
 from models import User, Event
 from database.session import async_session_factory
+from .department import router as department_router
 
 router = APIRouter()
+router.include_router(department_router, prefix="/department")
 
 @router.post("/user/register")
 async def register_user(

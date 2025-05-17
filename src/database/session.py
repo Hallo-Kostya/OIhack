@@ -26,3 +26,6 @@ async_engine = create_async_engine(
 async_session_factory = async_sessionmaker(async_engine, expire_on_commit=False)
 session_factory = sessionmaker(sync_engine)
 
+def session_getter():
+    with session_factory() as session: 
+        yield session
