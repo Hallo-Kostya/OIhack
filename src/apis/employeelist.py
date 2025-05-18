@@ -22,13 +22,16 @@ async def get_employees(
     """
     async with async_session_factory() as session:
         try:
+            # Создаем базовый запрос
             stmt = select(User)
             
+            # Применяем фильтры, если они указаны
             if department:
                 stmt = stmt.where(User.department == department)
             if project:
                 stmt = stmt.where(User.project == project)
             if name:
+                # Ищем по имени или фамилии
                 stmt = stmt.where(
                     or_(
                         User.first_name.ilike(f"%{name}%"),
@@ -37,6 +40,7 @@ async def get_employees(
                     )
                 )
             
+            # Выполняем запрос
             result = await session.execute(stmt)
             users = result.scalars().all()
             
