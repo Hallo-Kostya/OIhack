@@ -10,11 +10,13 @@ export default function Search() {
                 alt={"Поиск"}
             >
             </Image>
-            <input
-                type="text"
-                placeholder={"Задайте свой вопрос"}
-                className="w-full h-full bg-transparent outline-none pl-[12px] text-[#828282]"
-            />
+            <a href='/chat'>
+                <input
+                    type="text"
+                    placeholder={"Задайте свой вопрос"}
+                    className="w-full h-full bg-transparent outline-none pl-[12px] text-[#828282]"
+                />
+            </a>
         </div>
     );
 }

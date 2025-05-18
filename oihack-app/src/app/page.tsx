@@ -79,7 +79,7 @@ export default function Home() {
         <Slider items={items} />
         <Functions functions={functions} />
       </main>
-      <footer className="h-[95px] mt-[128px] bg-black">
+      <footer className="h-[95px] mt-[128px] bg-black/10">
 
       </footer>
     </div>
