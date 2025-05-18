@@ -1,16 +1,12 @@
 from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
 from typing import List, Optional
-from datetime import datetime
 from sqlalchemy import or_, select
 from src.database.session import async_session_factory
-from src.models.calendar import Employee
-from src.schemas.employee import EmployeeResponse
 from src.models.user import User
 
-router = APIRouter()
+list_router = APIRouter()
 
-@router.get("/employees", response_model=List[EmployeeResponse])
+@list_router.get("/employees")
 async def get_employees(
     name: Optional[str] = None,
     department: Optional[str] = None,
@@ -52,7 +48,7 @@ async def get_employees(
                 detail=f"Ошибка при получении списка сотрудников: {str(e)}"
             )
 
-@router.get("/employees/{employee_id}", response_model=EmployeeResponse)
+@list_router.get("/employees/{employee_id}")
 async def get_employee(
     employee_id: int,
 ):

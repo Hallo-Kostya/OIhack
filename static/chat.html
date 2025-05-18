@@ -94,7 +94,7 @@
     </div>
 
     <script>
-        const ws = new WebSocket('ws://localhost:8000/api/ws/chat');
+        const ws = new WebSocket('ws://localhost:8000/api/ws/chat/?user_id=1');
         const messagesDiv = document.getElementById('messages');
         const messageInput = document.getElementById('messageInput');
         const statusDiv = document.getElementById('status');

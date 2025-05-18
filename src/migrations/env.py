@@ -1,12 +1,13 @@
+from src.models.event import Event
+from src.models.user import User
 from logging.config import fileConfig
-
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from alembic import context
 from src.config import settings
-import src.model
-from src.models.base import Base
+from src.database.base import Base
 config = context.config
+
 
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
