@@ -18,7 +18,7 @@ export default function Chat() {
     const ws = useRef<WebSocket | null>(null);
   
     useEffect(() => {
-      // Подключение к WebSocket — РАСКОММЕНТИРОВАНО
+      // Подключение к WebSocket
       ws.current = new WebSocket('ws://localhost:8000/api/ws/chat');
   
       ws.current.onopen = () => {
@@ -111,7 +111,7 @@ export default function Chat() {
       <div className="flex-1 overflow-y-auto p-4 max-w-4xl w-full mx-auto">
         <div className="space-y-3">
           {messages.length === 0 && (
-            <div className="text-center text-gray-500 py-10">
+            <div className="text-center text-gray-500 py-10 pl-10">
               Начните диалог с AI-ассистентом
             </div>
           )}

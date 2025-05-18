@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Search from "@/components/Search";
 import Slider from "@/components/Slider";
 import Functions from "@/components/Functions";
+import Link from "next/link";
 
 // Templates
 const items = [
@@ -79,8 +80,19 @@ export default function Home() {
         <Slider items={items} />
         <Functions functions={functions} />
       </main>
-      <footer className="h-[95px] mt-[128px] bg-black/10">
-
+      <footer className="h-[95px] mt-20  bg-black/10">
+          <div className="flex justify-center align-center gap-2 pt-5">
+            <Link href={"https://www.interesnee.ru/"}>
+              <Image 
+                src={"/common/logo.png"} 
+                alt={"Очень интересно"}
+                width={24} 
+                height={24}>
+              </Image>
+            </Link>
+            <h1>Очень интересно</h1>
+          </div>
+          <h2 className="flex justify-center text-[14px] font-[300] mt-2 opacity-[0.8]">Россия, г. Екатеринбург</h2>
       </footer>
     </div>
   );
