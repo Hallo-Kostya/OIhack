@@ -1,8 +1,8 @@
 from fastapi import APIRouter
-from schemas.user import UserBase
-from schemas.event import EventCreateBase
-from models import User, Event
-from database.session import async_session_factory
+from src.schemas.user import UserBase
+from src.schemas.event import EventCreateBase
+from src.models import User, Event
+from src.database.session import async_session_factory
 
 router = APIRouter()
 

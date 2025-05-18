@@ -1,9 +1,9 @@
 from typing import List
 from langchain_gigachat.chat_models import GigaChat
 from sqlalchemy import select
-from config import settings 
-from database.session import async_session_factory,session_factory
-from models import User, Event
+from src.config import settings
+from src.database.session import async_session_factory,session_factory
+from src.models import User, Event
 from fastapi import HTTPException
 from datetime import datetime
 from langgraph.checkpoint.memory import MemorySaver
@@ -14,7 +14,7 @@ from langgraph.prebuilt import create_react_agent
 giga = GigaChat(
     model="GigaChat",
     verify_ssl_certs=False,
-    credentials=settings.GIGACHAT_API_KEY
+    credentials=settings.GIGACHAT_AUTH_KEY
 )
 few_shot_examples = [
     {"request": "Выведи все задачи, созданные пользователем с 3 айди", "params":{"user_id":3}},

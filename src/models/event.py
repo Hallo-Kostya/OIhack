@@ -2,6 +2,9 @@ from datetime import datetime
 from sqlalchemy import String, DateTime, Text, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column,relationship
 from .base import Base
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from src.models.user import User
 
 class Event(Base):
     __tablename__ = "events"

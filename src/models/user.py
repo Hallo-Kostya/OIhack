@@ -4,6 +4,9 @@ from typing import List
 from sqlalchemy import String, Date, Enum as SQLEnum, Text, DateTime
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from .base import Base
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from src.models.event import Event
 
 
 class WorkStatus(str, Enum):
